@@ -143,3 +143,8 @@ augroup rubyGroup
 	autocmd FileType eruby iabbrev <%    <%%><left><left>
 	autocmd FileType eruby iabbrev <=    <%=%><left><left>
 augroup end
+
+
+" Make vertical split separator less than a full column wide
+" SEE: https://vi.stackexchange.com/a/2942
+hi VertSplit guibg=bg guifg=fg
