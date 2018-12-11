@@ -151,4 +151,4 @@ augroup end
 
 " Make vertical split separator less than a full column wide
 " SEE: https://vi.stackexchange.com/a/2942
-hi VertSplit guibg=bg guifg=fg
+hi VertSplit gui=NONE guibg=bg guifg=fg
