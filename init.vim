@@ -1,7 +1,3 @@
-" Enable syntax highlighting
-syntax on
-
-
 " Use true colors (24 bit/GUI colors)
 set termguicolors
 
