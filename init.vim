@@ -75,6 +75,10 @@ command! -nargs=+ Rg execute 'silent grep! <args>' | copen
 nnoremap K :Rg "\b<c-r><c-w>\b"<cr>
 
 
+" Bind \ (backward slash) to grep shortcut to make searching faster
+nnoremap \ :Rg<SPACE>
+
+
 " Delete the buffer without losing/closing the window split
 " SEE: https://github.com/neovim/neovim/issues/2434
 nnoremap <leader>d :setl bufhidden=delete\|bnext<cr>
