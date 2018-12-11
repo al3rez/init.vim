@@ -176,6 +176,10 @@ augroup jsGroup
 	autocmd FileType javascript set ts=2 sts=2 sw=2 et
 augroup end
 
+augroup jsGroup
+	autocmd FileType javascript set ts=4 sts=4 sw=4 et
+augroup end
+
 
 " Make vertical split separator less than a full column wide
 " SEE: https://vi.stackexchange.com/a/2942
