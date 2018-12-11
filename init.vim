@@ -122,9 +122,9 @@ Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
 
 
-" Landscape color-scheme
-" SEE: https://github.com/itchyny/landscape.vim
-Plug 'itchyny/landscape.vim'
+" PaperColor color-scheme
+" SEE: https://github.com/NLKNguyen/papercolor-theme
+Plug 'NLKNguyen/papercolor-theme'
 
 
 " Make tab line look better
@@ -136,7 +136,7 @@ call plug#end()
 
 
 " Set color-scheme
-colorscheme landscape
+colorscheme PaperColor
 
 
 " Define file type specific settings
