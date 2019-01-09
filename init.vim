@@ -1,7 +1,3 @@
-" Use true colors (24 bit/GUI colors)
-set termguicolors
-
-
 " Auto-reload when file changes
 set autoread
 
@@ -113,26 +109,36 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 " SEE: https://github.com/vim-ruby/vim-ruby
 Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 
+
 " Improve Ruby support
 " SEE: https://github.com/vim-ruby/vim-ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-
-
-" PaperColor color-scheme
-" SEE: https://github.com/NLKNguyen/papercolor-theme
-Plug 'NLKNguyen/papercolor-theme'
 
 
 " Make tab line look better
 " SEE: https://github.com/mkitt/tabline.vim
 Plug 'mkitt/tabline.vim'
 
+
+" Add bracket mappings
+" SEE: https://github.com/tpope/vim-unimpaired
+Plug 'tpope/vim-unimpaired'
+
+
+" Add SCSS support
+" SEE: https://github.com/cakebaker/scss-syntax.vim
+Plug 'cakebaker/scss-syntax.vim'
+
+
+" Improve vim search
+" SEE: https://github.com/haya14busa/is.vim
+Plug 'haya14busa/is.vim'
 " ===================================================================
 call plug#end()
 
 
 " Set color-scheme
-colorscheme PaperColor
+colorscheme default
 
 
 " Define file type specific settings
@@ -142,9 +148,39 @@ augroup rubyGroup
 	" %>` which is much faster than typing manually.
 	autocmd FileType eruby iabbrev <%    <%%><left><left>
 	autocmd FileType eruby iabbrev <=    <%=%><left><left>
+
+	" RSpec mappings
+	autocmd FileType ruby map <leader>R :!./bin/rspec %<CR>
+	autocmd FileType ruby map <leader>r :!./bin/rspec %:<C-r>=line('.')<CR><CR>
+augroup end
+
+augroup jsGroup
+	" NOTE: Add abbreviations for `<%%>` and `<%=%>` when working with
+	" `*.erb` files you can just type `<%` for `<% %>` and `<%=` for `<%=
+	" %>` which is much faster than typing manually.
+	autocmd FileType javascript.jsx set ts=2 sts=2 sw=2 et
+	autocmd FileType javascript set ts=2 sts=2 sw=2 et
 augroup end
 
 
 " Make vertical split separator less than a full column wide
 " SEE: https://vi.stackexchange.com/a/2942
-hi VertSplit gui=NONE guibg=bg guifg=fg
+hi VertSplit gui=NONE guibg=bg guifg=fg cterm=none
+
+
+" Remove unfocused tab line underline
+hi TabLine cterm=NONE
+
+
+" Use mouse
+set mouse=a
+
+
+" No backup file
+set noswapfile
+set nobackup
+
+
+" Overwrite vim-unimpaired [t and ]t to switch bwteen tabs
+nnoremap [t :tabp<CR>
+nnoremap ]t :tabn<CR>
