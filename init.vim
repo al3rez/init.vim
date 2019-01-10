@@ -133,6 +133,20 @@ Plug 'cakebaker/scss-syntax.vim'
 " Improve vim search
 " SEE: https://github.com/haya14busa/is.vim
 Plug 'haya14busa/is.vim'
+
+
+" Show diff using SignColumn
+" SEE: https://github.com/airblade/vim-gitgutter
+Plug 'airblade/vim-gitgutter'
+
+
+" Switch between single and multiline code
+" SEE: https://github.com/andrewradev/splitjoin.vim
+Plug 'andrewradev/splitjoin.vim'
+
+" Git wrapper
+" SEE: https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
 " ===================================================================
 call plug#end()
 
@@ -184,3 +198,5 @@ set nobackup
 " Overwrite vim-unimpaired [t and ]t to switch bwteen tabs
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
+
+set updatetime=100
