@@ -19,6 +19,9 @@ set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 " Display tab line
 set showtabline=2
 
+" Display line numbers
+set number
+
 
 " Use comma as <leader>
 " NOTE: Which will be used in mapping combinations. For example; `<leader>p`
@@ -150,7 +153,8 @@ Plug 'tpope/vim-fugitive'
 
 " Sidebar tree
 " SEE: https://github.com/scrooloose/nerdtree
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'altercation/vim-colors-solarized'
 " ===================================================================
@@ -213,3 +217,6 @@ nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
 
 set updatetime=100
+
+nnoremap <leader>N :NERDTreeFind<cr>
+nnoremap <leader>q :ccl<cr>
