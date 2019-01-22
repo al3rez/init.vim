@@ -151,12 +151,15 @@ Plug 'tpope/vim-fugitive'
 " Sidebar tree
 " SEE: https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree'
+
+Plug 'altercation/vim-colors-solarized'
 " ===================================================================
 call plug#end()
 
 
 " Set color-scheme
-colorscheme default
+set background=dark
+colorscheme solarized
 
 
 " Define file type specific settings
@@ -191,7 +194,9 @@ hi VertSplit gui=NONE guibg=bg guifg=fg cterm=none
 
 
 " Remove unfocused tab line underline
-hi TabLine cterm=NONE
+hi TabLineFill ctermfg=bg ctermbg=fg cterm=none
+hi TabLineSel ctermfg=fg ctermbg=bg cterm=none
+hi TabLine ctermfg=bg ctermbg=fg cterm=none
 
 
 " Use mouse
