@@ -147,6 +147,10 @@ Plug 'andrewradev/splitjoin.vim'
 " Git wrapper
 " SEE: https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
+
+" Sidebar tree
+" SEE: https://github.com/scrooloose/nerdtree
+Plug 'scrooloose/nerdtree'
 " ===================================================================
 call plug#end()
 
