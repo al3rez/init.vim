@@ -209,3 +209,6 @@ set updatetime=100
 
 nnoremap <leader>N :NERDTreeFind<cr>
 nnoremap <leader>q :ccl<cr>
+
+let g:picker_find_executable = 'git'
+let g:picker_find_flags = 'ls-files --cached --exclude-standard --others'
