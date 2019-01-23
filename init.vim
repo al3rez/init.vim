@@ -86,7 +86,15 @@ nnoremap <leader>b :PickerBuffer<cr>
 
 " Search through files
 " SEE: https://github.com/cloudhead/neovim-fuzzy
-nnoremap <leader>p :PickerTabedit<cr>
+function! FzyCommand()
+	if (getbufinfo({'buflisted':1})[0].name == '') == 1
+		call picker#Edit()
+	else
+		call picker#Tabedit()
+	endif
+endfunction
+
+nnoremap <leader>p :call FzyCommand()<cr>
 
 
 " Define plugins
