@@ -81,26 +81,18 @@ nnoremap <leader>d :setl bufhidden=delete\|bnext<cr>
 
 " Switch between buffers
 " SEE: https://vi.stackexchange.com/a/2187
-nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>b :PickerBuffer<cr>
 
 
 " Search through files
 " SEE: https://github.com/cloudhead/neovim-fuzzy
-nnoremap <leader>p :FuzzyOpen<cr>
+nnoremap <leader>p :PickerTabedit<cr>
 
 
 " Define plugins
 " SEE: https://github.com/junegunn/vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 " ===================================================================
-
-" Add fzy integration (to search through files)
-" SEE: https://github.com/cloudhead/neovim-fuzzy
-" FAQ: You have to install fzy (`brew install fzy`)
-" FAQ: You have to install rg or ag (`brew install ripgrep/ag`)
-Plug 'cloudhead/neovim-fuzzy', { 'on': 'FuzzyOpen' }
-
-
 " Add JavaScript and JSX support
 " SEE: https://github.com/pangloss/vim-javascript
 " SEE: https://github.com/mxw/vim-jsx
@@ -147,16 +139,13 @@ Plug 'airblade/vim-gitgutter'
 " SEE: https://github.com/andrewradev/splitjoin.vim
 Plug 'andrewradev/splitjoin.vim'
 
-" Git wrapper
-" SEE: https://github.com/tpope/vim-fugitive
-Plug 'tpope/vim-fugitive'
-
 " Sidebar tree
 " SEE: https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'srstevenson/vim-picker'
 " ===================================================================
 call plug#end()
 
