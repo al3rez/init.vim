@@ -6,6 +6,7 @@ set autoread
 inoremap jk <esc>
 xnoremap jk <esc>
 tnoremap jk <c-\><c-n>
+cnoremap jk <esc>
 
 
 " Do smart auto-indenting when starting a new line
@@ -101,57 +102,11 @@ nnoremap <leader>p :call FzyCommand()<cr>
 " SEE: https://github.com/junegunn/vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 " ===================================================================
-" Add JavaScript and JSX support
-" SEE: https://github.com/pangloss/vim-javascript
-" SEE: https://github.com/mxw/vim-jsx
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
-
-
-" Add Elixir support
-" SEE: https://github.com/vim-ruby/vim-ruby
-Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
-
-
-" Improve Ruby support
-" SEE: https://github.com/vim-ruby/vim-ruby
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-
-
-" Make tab line look better
-" SEE: https://github.com/mkitt/tabline.vim
 Plug 'mkitt/tabline.vim'
-
-
-" Add bracket mappings
-" SEE: https://github.com/tpope/vim-unimpaired
 Plug 'tpope/vim-unimpaired'
-
-
-" Add SCSS support
-" SEE: https://github.com/cakebaker/scss-syntax.vim
-Plug 'cakebaker/scss-syntax.vim'
-
-
-" Improve vim search
-" SEE: https://github.com/haya14busa/is.vim
 Plug 'haya14busa/is.vim'
-
-
-" Show diff using SignColumn
-" SEE: https://github.com/airblade/vim-gitgutter
 Plug 'airblade/vim-gitgutter'
-
-
-" Switch between single and multiline code
-" SEE: https://github.com/andrewradev/splitjoin.vim
-Plug 'andrewradev/splitjoin.vim'
-
-" Sidebar tree
-" SEE: https://github.com/scrooloose/nerdtree
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind'] }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 Plug 'altercation/vim-colors-solarized'
 Plug 'srstevenson/vim-picker'
 " ===================================================================
@@ -213,10 +168,15 @@ set nobackup
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
 
+
+" Write to file within 100 ms
 set updatetime=100
 
-nnoremap <leader>N :NERDTreeFind<cr>
+
+" Close quickfix window with <leader>q
 nnoremap <leader>q :ccl<cr>
 
+
+" Use git-ls-files to make vim-picker faster
 let g:picker_find_executable = 'git'
 let g:picker_find_flags = 'ls-files --cached --exclude-standard --others'
