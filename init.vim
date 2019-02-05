@@ -14,7 +14,7 @@ set smartindent
 
 
 " Display a parenthesized file type after file name in status line
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ [%{FugitiveHead()}]\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 
 " Display tab line
@@ -83,19 +83,7 @@ nnoremap <leader>d :setl bufhidden=delete\|bnext<cr>
 " Switch between buffers
 " SEE: https://vi.stackexchange.com/a/2187
 nnoremap <leader>b :PickerBuffer<cr>
-
-
-" Search through files
-" SEE: https://github.com/cloudhead/neovim-fuzzy
-function! FzyCommand()
-	if (getbufinfo({'buflisted':1})[0].name == '') == 1
-		call picker#Edit()
-	else
-		call picker#Tabedit()
-	endif
-endfunction
-
-nnoremap <leader>p :call FzyCommand()<cr>
+nnoremap <leader>p :PickerEdit<cr>
 
 
 " Define plugins
@@ -103,19 +91,26 @@ nnoremap <leader>p :call FzyCommand()<cr>
 call plug#begin('~/.local/share/nvim/plugged')
 " ===================================================================
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-Plug 'mkitt/tabline.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'haya14busa/is.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'srstevenson/vim-picker'
+Plug 'leroyg/vim-flay'
+Plug 'janko-m/vim-test' | Plug 'benmills/vimux'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elzr/vim-json'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+Plug 'molok/vim-smartusline'
+Plug 'eugen0329/vim-esearch'
 " ===================================================================
 call plug#end()
 
-
 " Set color-scheme
 set background=dark
-colorscheme solarized
+colorscheme hemisu
 
 
 " Define file type specific settings
@@ -127,8 +122,35 @@ augroup rubyGroup
 	autocmd FileType eruby iabbrev <=    <%=%><left><left>
 
 	" RSpec mappings
-	autocmd FileType ruby map <leader>R :!./bin/rspec %<CR>
-	autocmd FileType ruby map <leader>r :!./bin/rspec %:<C-r>=line('.')<CR><CR>
+	" autocmd FileType ruby map <leader>R :!./bin/rspec %<CR>
+	" autocmd FileType ruby map <leader>r :!./bin/rspec %:<C-r>=line('.')<CR><CR>
+
+	function! OpenTestAlternate()
+	  let new_file = AlternateForCurrentFile()
+	  exec ':e ' . new_file
+	endfunction
+	function! AlternateForCurrentFile()
+	  let current_file = expand("%")
+	  let new_file = current_file
+	  let in_spec = match(current_file, '^spec/') != -1
+	  let going_to_spec = !in_spec
+	  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1  || match(current_file, '\<services\>') != -1
+	  if going_to_spec
+	    if in_app
+	      let new_file = substitute(new_file, '^app/', '', '')
+	    end
+	    let new_file = substitute(new_file, '\.e\?rb$', '_spec.rb', '')
+	    let new_file = 'spec/' . new_file
+	  else
+	    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+	    let new_file = substitute(new_file, '^spec/', '', '')
+	    if in_app
+	      let new_file = 'app/' . new_file
+	    end
+	  endif
+	  return new_file
+	endfunction
+	nnoremap <leader>. :call OpenTestAlternate()<cr>
 augroup end
 
 augroup jsGroup
@@ -146,7 +168,7 @@ augroup end
 
 " Make vertical split separator less than a full column wide
 " SEE: https://vi.stackexchange.com/a/2942
-hi VertSplit gui=NONE guibg=bg guifg=fg cterm=none
+hi VertSplit cterm=none ctermbg=bg
 
 
 " Remove unfocused tab line underline
@@ -180,3 +202,15 @@ nnoremap <leader>q :ccl<cr>
 " Use git-ls-files to make vim-picker faster
 let g:picker_find_executable = 'git'
 let g:picker_find_flags = 'ls-files --cached --exclude-standard --others'
+
+nmap <silent> <leader>r :TestNearest<CR>
+nmap <silent> <leader>R :TestFile<CR>
+let test#strategy = "vimux"
+let g:test#preserve_screen = 0
+
+
+" Highlight trailling whitespace
+hi ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+let g:smartusline_string_to_highlight = '%f'
