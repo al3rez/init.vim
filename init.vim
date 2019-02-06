@@ -102,6 +102,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'molok/vim-smartusline'
 Plug 'eugen0329/vim-esearch'
 Plug 'tpope/vim-endwise'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " ===================================================================
 call plug#end()
 
