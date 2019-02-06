@@ -104,6 +104,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'molok/vim-smartusline'
 Plug 'eugen0329/vim-esearch'
+Plug 'tpope/vim-endwise'
 " ===================================================================
 call plug#end()
 
