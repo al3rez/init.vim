@@ -96,7 +96,6 @@ Plug 'haya14busa/is.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'srstevenson/vim-picker'
-Plug 'leroyg/vim-flay'
 Plug 'janko-m/vim-test' | Plug 'benmills/vimux'
 Plug 'noahfrederick/vim-hemisu'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -205,8 +204,6 @@ let g:picker_find_flags = 'ls-files --cached --exclude-standard --others'
 
 nmap <silent> <leader>r :TestNearest<CR>
 nmap <silent> <leader>R :TestFile<CR>
-let test#strategy = "vimux"
-let g:test#preserve_screen = 0
 
 
 " Highlight trailling whitespace
@@ -214,3 +211,5 @@ hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 let g:smartusline_string_to_highlight = '%f'
+
+let test#strategy = "neovim"
