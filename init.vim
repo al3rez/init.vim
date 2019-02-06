@@ -17,9 +17,6 @@ set smartindent
 set statusline=%<%f\ [%{FugitiveHead()}]\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 
-" Display tab line
-set showtabline=2
-
 " Display line numbers
 set number
 
@@ -134,7 +131,8 @@ augroup rubyGroup
 	  let new_file = current_file
 	  let in_spec = match(current_file, '^spec/') != -1
 	  let going_to_spec = !in_spec
-	  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1  || match(current_file, '\<services\>') != -1
+	  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1  || match(current_file, '\<services\>') != -1 || match(current_file, '\<jobs\>') != -1
+
 	  if going_to_spec
 	    if in_app
 	      let new_file = substitute(new_file, '^app/', '', '')
@@ -214,3 +212,9 @@ match ExtraWhitespace /\s\+$/
 let g:smartusline_string_to_highlight = '%f'
 
 let test#strategy = "neovim"
+
+" Switch between windows with CTRL+hjkl
+map <C-J> <C-W>j
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+map <C-K> <C-W>k
