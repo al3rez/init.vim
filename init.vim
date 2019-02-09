@@ -101,6 +101,7 @@ Plug 'molok/vim-smartusline'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'acarapetis/vim-colors-github'
+Plug 'jiangmiao/auto-pairs'
 " ===================================================================
 call plug#end()
 
