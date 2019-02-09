@@ -94,32 +94,22 @@ Plug 'airblade/vim-gitgutter'
 Plug 'srstevenson/vim-picker'
 Plug 'janko-m/vim-test'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'molok/vim-smartusline'
-Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'acarapetis/vim-colors-github'
 " ===================================================================
 call plug#end()
 
 " Set color-scheme
-set background=dark
-colorscheme hemisu
+colorscheme github
 
 
 " Define file type specific settings
 augroup rubyGroup
-	" NOTE: Add abbreviations for `<%%>` and `<%=%>` when working with
-	" `*.erb` files you can just type `<%` for `<% %>` and `<%=` for `<%=
-	" %>` which is much faster than typing manually.
-	autocmd FileType eruby iabbrev <%    <%%><left><left>
-	autocmd FileType eruby iabbrev <=    <%=%><left><left>
-
-	" RSpec mappings
-	" autocmd FileType ruby map <leader>R :!./bin/rspec %<CR>
-	" autocmd FileType ruby map <leader>r :!./bin/rspec %:<C-r>=line('.')<CR><CR>
-
 	function! OpenTestAlternate()
 	  let new_file = AlternateForCurrentFile()
 	  exec ':e ' . new_file
@@ -150,21 +140,14 @@ augroup rubyGroup
 augroup end
 
 augroup jsGroup
-	" NOTE: Add abbreviations for `<%%>` and `<%=%>` when working with
-	" `*.erb` files you can just type `<%` for `<% %>` and `<%=` for `<%=
-	" %>` which is much faster than typing manually.
 	autocmd FileType javascript.jsx set ts=2 sts=2 sw=2 et
 	autocmd FileType javascript set ts=2 sts=2 sw=2 et
-augroup end
-
-augroup jsGroup
-	autocmd FileType javascript set ts=4 sts=4 sw=4 et
 augroup end
 
 
 " Make vertical split separator less than a full column wide
 " SEE: https://vi.stackexchange.com/a/2942
-hi VertSplit cterm=none ctermbg=bg
+" hi VertSplit cterm=none ctermbg=bg
 
 
 " Remove unfocused tab line underline
@@ -207,9 +190,14 @@ nmap <silent> <leader>R :TestFile<CR>
 hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+
+" Highlight filename in status line
 let g:smartusline_string_to_highlight = '%f'
 
+
+" Use neovim :terminal when running specs
 let test#strategy = "neovim"
+
 
 " Switch between windows with CTRL+hjkl
 map <C-J> <C-W>j
