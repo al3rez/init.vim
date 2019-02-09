@@ -101,7 +101,6 @@ Plug 'molok/vim-smartusline'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'acarapetis/vim-colors-github'
-Plug 'jiangmiao/auto-pairs'
 " ===================================================================
 call plug#end()
 
@@ -205,3 +204,7 @@ map <C-J> <C-W>j
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 map <C-K> <C-W>k
+
+
+" Disable automatic comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
