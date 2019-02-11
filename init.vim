@@ -97,15 +97,14 @@ Plug 'noahfrederick/vim-hemisu'
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
-Plug 'molok/vim-smartusline'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'acarapetis/vim-colors-github'
+Plug 'altercation/vim-colors-solarized'
 " ===================================================================
 call plug#end()
 
 " Set color-scheme
-colorscheme github
+colorscheme solarized
 
 
 " Define file type specific settings
