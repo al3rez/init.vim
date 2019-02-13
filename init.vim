@@ -100,6 +100,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/mru.vim'
 " ===================================================================
 call plug#end()
 
@@ -217,3 +218,7 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>l :PromoteToLet<cr>
+
+
+" Recent files
+nnoremap <leader>m :MRU<cr>
