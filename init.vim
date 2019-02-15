@@ -101,11 +101,13 @@ Plug 'tpope/vim-endwise', { 'for': 'ruby' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/mru.vim'
+Plug 'acarapetis/vim-colors-github'
+Plug 'fatih/vim-go'
 " ===================================================================
 call plug#end()
 
 " Set color-scheme
-colorscheme solarized
+colorscheme github
 
 
 " Define file type specific settings
