@@ -106,6 +106,7 @@ Plug 'fatih/vim-go'
 Plug 'ekalinin/dockerfile.vim'
 Plug 'rainerborene/vim-reek'
 Plug 'majutsushi/tagbar'
+Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
 " ===================================================================
 call plug#end()
 
