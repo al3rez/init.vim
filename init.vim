@@ -104,6 +104,8 @@ Plug 'vim-scripts/mru.vim'
 Plug 'acarapetis/vim-colors-github'
 Plug 'fatih/vim-go'
 Plug 'ekalinin/dockerfile.vim'
+Plug 'rainerborene/vim-reek'
+Plug 'majutsushi/tagbar'
 " ===================================================================
 call plug#end()
 
