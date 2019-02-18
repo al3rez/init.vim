@@ -103,6 +103,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/mru.vim'
 Plug 'acarapetis/vim-colors-github'
 Plug 'fatih/vim-go'
+Plug 'ekalinin/dockerfile.vim'
 " ===================================================================
 call plug#end()
 
