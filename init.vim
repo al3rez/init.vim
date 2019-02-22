@@ -111,7 +111,7 @@ Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
 call plug#end()
 
 " Set color-scheme
-colorscheme github
+colorscheme solarized
 
 
 " Define file type specific settings
@@ -211,7 +211,6 @@ map <C-L> <C-W>l
 map <C-H> <C-W>h
 map <C-K> <C-W>k
 
-
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -228,3 +227,8 @@ endfunction
 
 " Recent files
 nnoremap <leader>m :MRU<cr>
+
+nnoremap <leader>s :sp\|te<cr>
+nnoremap <leader>v :vsp\|te<cr>
+tnoremap <leader>s :sp\|te<cr>
+tnoremap <leader>v :vsp\|te<cr>
